@@ -45,4 +45,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
+
+    public function canAccessPanel(\Filament\Panel $panel): bool
+    {
+        // Bisa digunakan untuk logic spesifik panel tertentu
+        if ($panel->getId() === 'admin') {
+            return true;
+        }
+
+        return false;
+    }
 }
